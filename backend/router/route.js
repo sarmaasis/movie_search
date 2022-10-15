@@ -3,6 +3,8 @@ const router = express.Router();
 const { check, validationResult} = require("express-validator");
 const usercontroller = require('../controller/registration');
 const logincontroller = require('../controller/login')
+const searchcontroller = require('../controller/search')
+const authcontroller = require('../controller/auth')
 
 
 
@@ -13,6 +15,8 @@ router.post('/login', [
                 min: 6
             })
             ],logincontroller.Login);
+
+router.get('/search', authcontroller.Auth , searchcontroller.Search);
 
 
 module.exports = router;
