@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 function Register() {
 	const navigate = useNavigate()
@@ -11,17 +12,19 @@ function Register() {
 	async function registerUser(event) {
 		event.preventDefault()
 
-		const response = await fetch('http://13.127.208.70:8000/api/register', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				username,
-				email,
-				password,
-			}),
-		})
+		// const response = await fetch('http://13.127.208.70:8000/api/register', {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		'Content-Type': 'application/x-www-form-urlencoded',
+		// 	},
+		// 	body: JSON.stringify({
+		// 		username: username,
+		// 		email: email,
+		// 		password: password,
+		// 	}),
+		// })
+		const response = await axios.post('http://13.127.208.70:8000/api/register', {username: username, email: email, password: password})
+		console.log(response.data)
 
 		const data = await response.json()
 

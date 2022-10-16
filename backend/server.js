@@ -11,9 +11,9 @@ const app = express()
 app.use(cors())
 
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+// app.use(bodyParser.urlencoded({
+//     extended: true
+// }));
 
 mongoose.connect(db.dbUrl, (err) => {
     if(err){
