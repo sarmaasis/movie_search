@@ -24,7 +24,7 @@ function Login() {
 		const data = await response.data
 		if (data.token) {
 			localStorage.setItem('token', data.token)
-			window.location.href = './Search.jsx'
+			window.location.href = '/search'
 		} else {
 			alert('Please check your username and password')
 		}

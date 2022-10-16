@@ -1,0 +1,16 @@
+.title{
+    display: flex;
+    justify-content: center;
+}
+
+.searchbox{
+    display: flex;
+    justify-content: center;
+    vertical-align: auto;
+}
+
+.cardalingment{
+    display: flex;
+    align-content: flex-start;
+    justify-items: center;
+}
