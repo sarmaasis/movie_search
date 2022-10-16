@@ -24,12 +24,14 @@ function Register() {
 		// 	}),
 		// })
 		const response = await axios.post('http://13.127.208.70:8000/api/register', {username: username, email: email, password: password})
-		console.log(response.data)
+		
+		const data = response.data
 
-		const data = await response.json()
-
-		if (data.status === 'ok') {
+		if (data.msg === "User Created") {
 			navigate('./Login.jsx')
+		}
+		else{
+			alert(data.msg)
 		}
 	}
 

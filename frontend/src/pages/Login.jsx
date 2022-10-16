@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import axios from 'axios'
+
 
 function Login() {
 	const [email, setEmail] = useState('')
@@ -7,22 +9,21 @@ function Login() {
 	async function loginUser(event) {
 		event.preventDefault()
 
-		const response = await fetch('http://13.127.208.70:8000/api/login', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				email,
-				password,
-			}),
-		})
+		// const response = await fetch('http://13.127.208.70/api/login', {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 	},
+		// 	body: JSON.stringify({
+		// 		email,
+		// 		password,
+		// 	}),
+		// })
 
-		const data = await response.json()
-
+		const response = await axios.post('http://13.127.208.70:8000/api/login', {email: email, password: password})
+		const data = await response.data
 		if (data.token) {
 			localStorage.setItem('token', data.token)
-			alert('Login successful')
 			window.location.href = './Search.jsx'
 		} else {
 			alert('Please check your username and password')
