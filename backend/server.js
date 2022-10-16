@@ -14,6 +14,7 @@ app.use(cors())
 // app.use(bodyParser.urlencoded({
 //     extended: true
 // }));
+app.use(bodyParser.json())
 
 mongoose.connect(db.dbUrl, (err) => {
     if(err){
