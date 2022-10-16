@@ -22,7 +22,7 @@ mongoose.connect(db.dbUrl, (err) => {
 });
 
 app.get('/', (req,res)=>{
-    res.send({message: "Hey"})
+    res.json({message: "Hey"})
 })
 
 app.use('/api', router)

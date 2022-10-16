@@ -19,18 +19,18 @@ const Registration = async(req,res) => {
                         const password = hash;
                         user.create({email: req.body.email, username: req.body.username,password: password}, (err) => {
                             if(err){
-                                res.send(err)
+                                res.json(err)
                             }
-                            res.status(200).send({msg: "User Created"})
+                            res.status(200).json({msg: "User Created"})
                         })
                     }
                 });
             }
             else{
-                res.send("User already exists!!")
+                res.json({msg: "User already exists!!"})
             }
         }).catch((err)=>{
-            res.send(err)
+            res.json(err)
         })
 };
 
