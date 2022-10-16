@@ -2,7 +2,7 @@
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser');
-const port = "8000"
+const port = process.env.port || 8000
 const mongoose = require('mongoose');
 const router = require('./router/route');
 const db = require('./dbconfig/db');
@@ -21,6 +21,9 @@ mongoose.connect(db.dbUrl, (err) => {
     }
 });
 
+app.get('/', (req,res)=>{
+    res.send({message: "Hey"})
+})
 
 app.use('/api', router)
 
